@@ -1,0 +1,506 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Trustworthy AI | Home</title>
+	
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+    
+    <link rel="stylesheet" href="{% static 'assets/css/flexslider.css' %}" type="text/css" media="all" /><!-- for testimonials -->
+    
+	<!-- css files -->
+	<link rel="icon" type="image/png"  href="{% static 'assets/img/icon_s.png' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS --> 
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.css' %}"> <!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<!-- web-fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!-- //web-fonts -->
+	
+</head>
+
+<body>
+
+<!--Header-->
+<header>
+	<div class="container agile-banner_nav">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			
+			<a class="navbar-brand" href="{% static '../index' %}"><span class="display">BlockChain technology boosting</span>Trustworthy AI</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+							
+						<a class="nav-link" href="{% static '../index' %}">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% static '../services' %}">Services</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% static '../login' %}">Login</a>
+					</li>					
+					<li class="nav-item">
+						<a class="nav-link" href="{% static '../contact' %}">Contact</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="{% static '../about' %}">About</a>
+						</li>
+				</ul>
+			</div>
+		  
+		</nav>
+	</div>
+</header>
+<!--Header-->
+
+<!--/banner-->
+<div class="banner">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="carousel-item active" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('/static/assets/img/banner.jpg');
+			background-size: cover;">
+				<div class="carousel-caption">
+					<h3>Evaluate Your Model <span>Online</span></h3>
+					<p class="text-capitalize mt-3 mb-sm-5 mb-4">Making machine learning much easier</p>
+					<a href="{% static '../login' %}">Start Now <span class="fas fa-long-arrow-alt-down"></span></a>
+				</div>
+			</div>
+			<div class="carousel-item item2" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('/static/assets/img/banner1.jpg');
+			background-size: cover;">
+				<div class="carousel-caption">
+					<h3>Test with Many <span>Data</span></h3>
+					<p class="text-capitalize mt-3 mb-sm-5 mb-4">Testing your model with data around the world</p>
+					<a href="{% static '../login' %}">Start Now <span class="fas fa-long-arrow-alt-down"></span></a>
+				</div>
+			</div>
+			<div class="carousel-item item3" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('/static/assets/img/banner2.jpg');
+			background-size: cover;">
+				<div class="carousel-caption">
+					<h3>Earn Rewards Through <span>Blockchains</span></h3>
+					<p class="text-capitalize mt-3 mb-sm-5 mb-4">Making transactions for your model and data with more safety</p>
+					<a href="{% static '../login' %}">Start Now <span class="fas fa-long-arrow-alt-down"></span></a>
+					</div>
+			</div>
+			<div class="carousel-item item4" style="background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('/static/assets/img/banner3.jpg');
+			background-size: cover;">
+				<div class="carousel-caption">
+					<h3>Evaluate and Improve <span>Results</span></h3>
+					<p class="text-capitalize mt-3 mb-sm-5 mb-4">Getting trustworhy model plus user feedback</p>
+					<a href="{% static '../login' %}">Start Now <span class="fas fa-long-arrow-alt-down"></span></a>
+					</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+<!--//banner-->
+
+<!-- Welcome -->
+<section class="welcome py-5 my-lg-5">
+	<div class="container">
+		<div class="row welcome_grids">
+			<div class="col-lg-7 mb-lg-0 mb-5">
+				<h3 class="mb-3 text-capitalize">Welcome to Trustworthy AI</h3>
+				<p class="my-2 initial font-italic">AI is transforming everything</p>
+				<p class="mb-5 mt-4">As Artificial Intelligence (AI) is becoming a widely used tool in various fields, adequate methods have to 
+				be provided to allow users to employ AI techniques effectively. However, AI still faces prolonged challenges with low user 
+				acceptance as well as seeing system disuse, misuse, or even failure. These fundamental challenges can be attributed to the 
+				lack of user trust in AI. Blockchain technology provides 
+				benefits of security, decentralization, privacy and transparency. We incorporate the blockchain technology into AI to allow
+				secure evaluations of AI models with data around the world by using the Ethereum Blockchain and smart contracts, and thereby boosting 
+				trustworthy AI. Both AI model owners and data owners get rewards from blockchain supported AI evaluations.</p>
+                <a href="https://m.youtube.com/watch?feature=share&v=asu3IJFrMbE"><span class="fas fa-play-circle"></span> Check Video </a>
+            </div>
+			<div class="col-lg-5 welcome_right">
+				<img src="{% static 'assets/img/slide1.jpg' %}" alt="" class="img-fluid">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //Welcome -->
+
+<!-- Testimonials -->
+<section class="testimonials py-5" style = "background: url('/static/assets/img/test.jpg') no-repeat 0px 0px;
+background-size: cover;">
+	<div class="container py-lg-5">
+		<div class="row">
+			<!-- Clients -->
+			<div class=" col-lg-6 clients">
+				<div class="slider p-sm-5 p-4">
+					<div class="flexslider">
+						<ul class="slides">
+							<li>
+								<div class="client row">
+									<div class="col-sm-4">
+										<img src="{% static 'assets/img/wuyanzu.png' %}" alt="" />
+									</div>
+									<div class="col-sm-8">
+										<h5 class="my-2">Alex Zhuge</h5>
+										<h6>Model provider</h6>
+										<ul class="rating mt-2">
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+										</ul>
+									</div>
+								</div>
+								<p class="my-4">A very nice place that I could evaluate my model, test by others and collect feedback. </p>
+									
+							</li>
+							<li>
+								<div class="client row">
+									<div class="col-sm-4">
+										<img src="{% static 'assets/img/jaime.jpg' %}" alt="" />
+									</div>
+									<div class="col-sm-8">
+										<h5 class="my-2">Jaime Lannister</h5>
+										<h6>Data provider</h6>
+										<ul class="rating mt-2">
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star-half"></span></li>
+										</ul>
+									</div>
+								</div>
+								<p class="my-4">I uploaded the data to evaluate the chance that I could survive. They gave a result with 0. I don't believe that at first, now I believe.</p>
+									
+							</li>
+							<li>
+								<div class="client row">
+									<div class="col-sm-4">
+										<img src="{% static 'assets/img/longma.jpeg' %}" alt="" />
+									</div>
+									<div class="col-sm-8">
+										<h5 class="my-2">Daenerys Targarven</h5>
+										<!-- <h5 class="my-2">Daenerys Stormborn of the House Targarven.the First of Her Name、the Unburnt、Queen of Meereen、Queen of the Andals and the Rhoynar and the First Men、Lord of the Seven Kingdoms、Protector of the Realm、Khaleesi of the Great Grass Sea,Breaker of Shackles、Mother of Dragons
+
+											</h5> -->
+										<h6>Model provider</h6>
+										<ul class="rating mt-2">
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star-half"></span></li>
+										</ul>
+									</div>
+								</div>
+								<p class="my-4">
+									After I used my model to predict my chances of surviving, it gave me a result of 78%, but I still dead in the season finale, and this platform is a perfect play for me to improve my model.
+								</p>
+									
+							</li>
+							<li>
+								<div class="client row">
+									<div class="col-sm-4">
+										<img src="{% static 'assets/img/bran.png' %}" alt="" />
+									</div>
+									<div class="col-sm-8">
+										<h5 class="my-2">Bran Stark</h5>
+										<h6>Model provider</h6>
+										<ul class="rating mt-2">
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star"></span></li>
+											<li class="mx-1"><span class="fas fa-star-half"></span></li>
+										</ul>
+									</div>
+								</div>
+								<p class="my-4">By using this platform, I optimised my model with a very high accuracy. Thanks to the advanced analysis, I finally became a king.</p>
+									
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- //Clients -->
+			<div class="col-lg-6 collections mt-lg-0 mt-5 px-sm-5 px-4">
+				<h3>Collections from our customers</h3>
+				<p class="my-4">A model provider, who provides a Machine Learning (ML) model, wishes to test his/her ML model with rewards 
+				as reciprocation. In contrast, a data provider, who provides the data, expects to test the model with the aim to 
+				achieve rewards on offerring. All information is stored in a blockchain to keep the privacy, security, and trustworthiness. </p>
+				<a href="#" class="text-capitalize" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read more <i class="fas fa-angle-right"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Testimonials -->
+
+<!-- Process -->
+<section class="process py-5 my-lg-5">
+	<div class="container">
+		<div class="row process-grids">
+			<div class="col-lg-4 col-md-6 grid1">
+				<span class="fab fa-digital-ocean"></span>
+				<h3 class="text-uppercase mt-3">Goal</h3>
+				<p class="mt-sm-5 mt-3">An innovative platform to evaluate AI models and their outputs to boost user trust using blockchain technology.</p>
+				<ul class="mt-4">
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Evaluate and test AI models online</li>
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Use data around the world</li> {% comment %} Evaluate and analyse models/data {% endcomment %}
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Earn rewards through a blockchain</li>
+				</ul>
+			</div>
+			<div class="col-lg-4 col-md-6 grid1 mt-md-0 mt-5">
+				<span class="fab fa-digital-ocean"></span>
+				<h3 class="text-uppercase mt-3">Process</h3>
+				<p class="mt-sm-5 mt-3">A simple process for both model owners to evaluate their models and data owners to test their data for meaningful feedback. </p>
+				{% comment %} Our platform allows users to upload their models online to be tested by data around the world, or upload their data and earn rewards through a blockchain. {% endcomment %}
+				<ul class="mt-4">
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Upload models and test them online</li>
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Upload data and win rewards</li>
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Get meaningful feedback</li>
+				</ul>
+			</div>
+			<div class="col-lg-4 col-md-12 grid1 mt-lg-0 mt-5">
+				<span class="fab fa-digital-ocean"></span>
+				<h3 class="text-uppercase mt-3">Evaluation</h3>
+				<p class="mt-sm-5 mt-3">A diverse evluation metrics including Accuracy, Recall, F1 score and user feedback recorded into a blockchain.</p>
+				<ul class="mt-4">
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Use multiple evaluation metrics</li>
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Visualise/compare model proformance</li>
+					<li class="mt-2"><span class="fas fa-angle-right"></span>Save evaluations into a bolckchain</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //Process -->
+
+<!-- odometer stats-->
+<section class="odometer1">
+	<div class="layer py-5">
+		<div class="container py-lg-5">
+			<h3 class="heading mb-5 text-capitalize text-center">Platform Stats </h3>
+			<div class="row w3layouts_statistics_grid_right">
+				<div class="col-sm-3 col-6 text-center w3_stats_grid">
+					<h3 id="w3l_stats1" class="odometer">0</h3>
+					<p class="mt-2">Model Number</p>
+				</div>
+				<div class="col-sm-3 col-6 text-center w3_stats_grid">
+					<h3 id="w3l_stats2" class="odometer">0</h3>
+					<p class="mt-2">Data Number</p>
+				</div>
+				<div class="col-sm-3 col-6 mt-sm-0 mt-4 text-center w3_stats_grid">
+					<h3 id="w3l_stats3" class="odometer">0</h3>
+					<p class="mt-2">Models Sold</p>
+				</div>
+				<div class="col-sm-3 col-6 mt-sm-0 mt-4 text-center w3_stats_grid">
+					<h3 id="w3l_stats4" class="odometer">0</h3>
+					<p class="mt-2">Projects</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //odometer stats -->
+
+<!-- project -->
+<section class="project py-5 text-center">
+		<div class="container">
+			<h3 class="text-capitalize mb-md-5 mb-4">Do you want to start a new project?</h3>
+			<a href="{% static '../contact' %}" class="text-uppercase"><i class="fas fa-envelope-open"></i> contact us </a>
+		</div>
+	</section>
+	<!-- //project -->
+
+<!-- footer -->	
+<footer>
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<h3 class="text-uppercase mb-3">Address</h3>
+					<address>
+							<p><strong>Headquarters:</strong></p>
+							<p class="mb-3">UTS Central (Building 2), University of Technology Sydney, Broadway, Ultimo NSW 2007</p>
+							<p><strong>Phone</strong> : +61 434 450 149</p>
+							<p><strong>Email</strong> : <a href="mailto:xianfeng19971117@gmail.com">xianfeng19971117@gmail.com</a></p>
+						</address>
+				</div>
+				<div class="col-lg-2 col-md-6 mt-lg-0 mt-sm-0 mt-4 p-md-0">
+					<h3 class="text-uppercase mb-3">links</h3>
+					<div class="links">
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Navigation</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Documentation</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Business</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Technical support</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> 24/7 Service</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Feedback</a>
+					</div>	
+				</div>
+				<div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
+					<h3 class="text-uppercase mb-3">Recent Posts</h3>
+					<div class="posts">
+							<p class="pt-2">Updated Interface
+							<span class="font-italic">13rd June, 2019.</span></p>
+							<p class="py-2 my-2 middle">Optimized data analysis
+							<span class="font-italic">10th June, 2019.</span></p>
+							<p class="pt-2">Updated user relationship
+							<span class="font-italic">8th June, 2019.</span></p>
+						</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+					<h3 class="text-uppercase mb-3">Newsletter</h3>
+					<p class="mb-4 pt-2">Subscribe to our Newsletter to get important news, amazing offers & more</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<button class="btn1"><i class="far fa-envelope"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</footer>
+<!-- footer -->
+
+
+
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="exampleModalLongTitle"> Trustworthy AI</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/help3.png' %}" class="img-fluid mb-3" alt="Model Image" />
+		Different metrics such as accuracy, precision, recall, and F1 score are used to evaluate both the model performance and 
+		testing data quality. Both the average performance and the performance from individual testing data are reported for 
+		comparison. The whole 
+		lifecycle of the evaluation process can be summarized in six simple stages using the following user storyboard.
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- //Vertically centered Modal -->
+
+<!-- js-scripts -->		
+
+    <!-- js -->
+	<script type="text/javascript" src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/bootstrap.js' %}"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+	<!-- //js -->	
+	
+	<!-- odometer-script -->
+	<script src="{% static 'assets/js/odometer.js' %}"></script>
+	<script>
+		window.odometerOptions = {
+			format: '(ddd).dd'
+		};
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats1').html(64);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats2').html(330);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats3').html(25);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats4').html(92);
+		}, 1500);
+	</script>
+	<!-- //odometer-script -->
+    
+	<!-- start-smoth-scrolling -->
+	<script src="{% static 'assets/js/SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/easing.js' %}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- start-smoth-scrolling -->
+	
+	<!-- FlexSlider-JavaScript -->
+	<script defer src="{% static 'assets/js/jquery.flexslider.js' %}"></script>
+	<script type="text/javascript">
+		$(function(){
+			SyntaxHighlighter.all();
+				});
+				$(window).load(function(){
+				$('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider){
+						$('body').removeClass('loading');
+					}
+			});
+		});
+	</script>
+	<!-- //FlexSlider-JavaScript -->
+<!-- //js-scripts -->
+
+</body>
+</html>

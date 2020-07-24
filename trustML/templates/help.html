@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content_block %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title text-info">Help</h5>
+                <p class="category">A better understanding about Trustworthy AI</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="clear"></div>
+            <div class="row ">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="box-content default-set ">
+                        <div class="content_wrap ">
+                            <ol>
+                                <br />
+                                <br />
+                                <h2>Trustworthy AI</h2>
+                                <h4>System Overview
+                                </h4>
+                                <h5>User Classes</h5>
+                                <p><b>&#8226 Model provider</b>: a provider of the machine learning model.
+                                </p>
+                                <p> <b>&#8226 Data provider</b> : a provider of the data used to test the model. These
+                                    Partners are
+                                    trusted to the extent that they are expected to provide non-fraudulent data. Data 61
+                                    explained that such Partners could be Banks, Universities, or other large
+                                    institutions. In practice, only vetted entities would be allowed to create an
+                                    account.
+                                </p>
+                                <p> <b>&#8226 Buyer</b>: an entity wanting to buy a model for either personal or
+                                    commercial
+                                    use.
+                                </p>
+                                <h5>Overview of the system from each user’s perspective</h5>
+                                <p>Our platform is a website. Each class of user will use the website slightly
+                                    differently.
+                                </p>
+                                <p><b>&#8226 Model provider</b> are the admins of the system. Their accounts have special
+                                    permissions that allow them to both upload models and then pay Partners for their
+                                    data. For each model they upload, they also provide the training data, and a set of
+                                    specifications for test data format. This is so that Partners know how to upload
+                                    their data, and so that its quality can be assessed by comparing it to the original
+                                    training data.
+                                </p>
+                                <p>Step 1: Upload a model as an executable file， data specifications given as a JSON
+                                    file，
+                                    training data as csv file and label as csv file. Note the label file here will
+                                    be
+                                    used as the label when creating confusion matrix.
+                                </p>
+                                <img src="../../static/assets/img/help1.png" alt="..." height="500" width="800">
+                                <p>
+                                    step 2) Upload training data as CSV.
+                                </p>
+                                <img src="../../static/assets/img/help2.png" alt="..." height="400" width="900">
+                                <p>Step 3) Wait for Partners to upload testing data.
+                                </p>
+                                <img src="../../static/assets/img/help3.png" alt="..." height="600" width="900">
+                                <p><b>&#8226 Data provider</b> have standard accounts. They cannot upload models. However,
+                                    they can browse through those uploaded by the engineers, and then upload data in
+                                    order to get rewarded with Ether. Partners can only upload one set of data per
+                                    model, in order to prevent them from trying to claim multiple payments from the
+                                    same, or similar, data.
+                                </p>
+                                <p>Step 1: Upload a model as an executable file， data specifications given as a JSON
+                                    file，
+                                    training data as csv file and label as csv file. Note the label file here will
+                                    be
+                                    used as the label when creating confusion matrix.
+                                </p>
+                                <img src="../../static/assets/img/help4.png" alt="..." height="220" width="900">
+                                <p>Step 2) Upload data as CSV and see how the model performed.
+                                </p>
+                                <img src="../../static/assets/img/help5.png" alt="..." height="200" width="800">
+                                <p>Step 3) Get the test result and get paid automatically.
+                                </p>
+                                <img src="../../static/assets/img/help6.png" alt="..." height="600" width="900">
+                                <p><b>&#8226 Buyers</b> also have standard accounts, with the same permissions as
+                                    Partners. The only difference between Partners and Buyers is the motivation for each
+                                    user to use our platform. The latter wishes to claim rewards for their data, while
+                                    the former wishes to verify the quality of a model by analysing its performance.
+                                    Buyers cannot purchase models on our system - they will need to contact the
+                                    Engineers directly. The steps which a Buyer would carry out are the same as that of
+                                    a Partner, however, they would not upload any data, nor get paid for it.
+                                </p>
+                            </ol>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <p class="text-center">For more Q&amp;A visit our <a
+                                    href="https://bitbucket.org/p03/p03/src/master/">Bitbucket</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+{% endblock content_block %}

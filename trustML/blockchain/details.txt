@@ -1,0 +1,15 @@
+geth --datadir "./privatechain" account new
+
+# use any text editor to save the text below and save as genesis.json. Note the account address returned above is put in alloc:
+
+#new
+geth --identity "TestChain1" --cache=1024 --rpc --rpcaddr "127.0.0.1" --rpcport "8545" --datadir "./privatechain" --port "30312" -networkid 987 --nat "any" init "./genesis.json"
+geth --preload "./mine.js" --cache=1024 --rpc --rpcaddr "127.0.0.1" --rpcport "8545" --rpcapi "web3,eth,personal,admin,debug,miner" --datadir "./privatechain" --port "30312" --networkid 987 --nat "any" console
+
+geth --dev --cache=1024 --rpc --rpcaddr "127.0.0.1" --rpcport "8545" --datadir "./devchain" --port "30312" -networkid 987 --nat "any"
+geth --dev --cache=1024 --rpc --rpcaddr "127.0.0.1" --rpcport "8545" --rpcapi "web3,eth,personal,admin,debug,miner" --datadir "./devchain" --port "30312" --networkid 987 --nat "any" console
+
+
+geth --dev --cache=1024 --rpc --rpcaddr "127.0.0.1" --rpcport "8545" --rpcapi "web3,eth,personal,admin,debug,miner" --datadir "./devchain" --port "30312" --networkid 987 --nat "any" --password password.txt console
+
+geth --dev --cache=1024 --rpc --rpcaddr "127.0.0.1" --rpcport "8545" --rpcapi "web3,eth,personal,admin,debug,miner" --datadir "./devchain" --port "30312" --networkid 987 --nat "any" --password password.txt console

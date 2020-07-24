@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content_block %}
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="card card-user">
+        <div class="image">
+          {% if user.cover %}
+              <img src="{{ user.cover.url }}" alt="...">
+          {% else %}
+              <img  src="{% static 'assets/img/cover.png' %}" alt="...">
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <div class="author">
+
+              {% if user.image %}
+                  <img class="avatar border-gray" src="{{ user.image.url }}" alt="...">
+              {% else %}
+                  <img class="avatar border-gray" src="{% static 'assets/img/default-avatar.png' %}" alt="...">
+              {% endif %}
+              <h5 class="text-info">{{user.get_short_name}}</h5>
+
+            <p class="description">
+              {{user.email}}
+            </p>
+          </div>
+          <p class="description text-center">
+            {{ user.description }}
+          </p>
+        </div>
+        <hr><br>
+        <div style="padding:10px;">
+          <p class="description text-center">
+            <i class="fas fa-address-card"></i>
+            <b> {{ user.get_bc_acc }} </b>
+          </p>
+          <p class="description text-center">
+            <i class="fab fa-ethereum"></i> <br>
+            <b>{{ user.get_balance }}</b>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title text-info text-center">Edit Profile</h5>
+        </div>
+        <div class="card-body">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <div class="row">
+              <div class="col-md-2"></div>
+              <label class="col-md-2 col-form-label text-right">Description</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="description" value='{{ user.description }}' maxlength="1000" required="" id="id_description">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <label class="col-md-2 col-form-label text-right">Wallet Address</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="wallet_address" value="{{ user.wallet_address }}" maxlength="40" required="" id="id_wallet_address" readonly>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <label class="col-md-2 col-form-label text-right">Cover</label>
+              <div class="col-md-4">
+                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail">
+                    <img src="../../static/assets/img/image_placeholder.jpg" alt="...">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                    <div>
+                      <span class="btn btn-rose btn-round btn-file">
+                      <span class="fileinput-new">Choose</span>
+                      <span class="fileinput-exists">Change</span>
+                        <input type="file" name="cover" accept="image/*" id="id_cover">
+                      </span>
+                      <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                        <i class="fa fa-times"></i>
+                        Delete
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <label class="col-md-2 col-form-label text-right">Image</label>
+              <div class="col-md-4">
+                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail">
+                    <img src="../../static/assets/img/image_placeholder.jpg" alt="...">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                    <div>
+                      <span class="btn btn-rose btn-round btn-file">
+                      <span class="fileinput-new">Choose</span>
+                      <span class="fileinput-exists">Change</span>
+                        <input type="file" name="image" accept="image/*" id="id_image">
+                      </span>
+                      <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                        <i class="fa fa-times"></i>
+                        Delete
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <button name="change_profile" type="submit" class="btn btn-info btn-round btn-lg btn-block">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="title text-info text-center">Change Password</h5>
+            </div>
+            <div class="card-body">
+              <form method="POST">
+                {% csrf_token %}
+                <!-- {{ change_pw_form.as_p }} -->
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <label class="col-md-2 col-form-label text-right">Old Password</label>
+                  <div class="col-md-4">
+                    <input type="password" class="form-control" name="old_password" autofocus="" required="" id="id_old_password">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <label class="col-md-2 col-form-label text-right">New Password</label>
+                  <div class="col-md-4">
+                    <input type="password" class="form-control" name="new_password1" required="" id="id_new_password1">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <label class="col-md-2 col-form-label text-right">Confirm Password</label>
+                  <div class="col-md-4">
+                    <input type="password" class="form-control" name="new_password2" required="" id="id_new_password2">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <button name="change_pw" type="submit" class="btn btn-info btn-round btn-lg btn-block mb-3">Submit</button>
+                  </div>
+                </div>
+              </form>
+              <ul class="messages">
+                <li>Your password can't be too similar to your other personal information.</li>
+                <li>Your password must contain at least 8 characters.</li>
+                <li>Your password can't be a commonly used password.</li>
+                <li>Your password can't be entirely numeric.</li>
+                {% if messages %}
+                  {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,480 @@
+{
+    "abi": [
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getAccset",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256[]"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "setRank",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getAccuracy",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "model_submissions",
+            "outputs": [
+                {
+                    "name": "accuracy",
+                    "type": "uint8"
+                },
+                {
+                    "name": "precision",
+                    "type": "uint8"
+                },
+                {
+                    "name": "recall",
+                    "type": "uint8"
+                },
+                {
+                    "name": "fscore",
+                    "type": "uint8"
+                },
+                {
+                    "name": "rank",
+                    "type": "uint16"
+                },
+                {
+                    "name": "score",
+                    "type": "uint8"
+                },
+                {
+                    "name": "paid",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "senderAddress",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getRank",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint16"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getUncset",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256[]"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "index",
+                    "type": "uint16"
+                }
+            ],
+            "name": "getSubmissionAU",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256[]"
+                },
+                {
+                    "name": "",
+                    "type": "uint256[]"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "index",
+                    "type": "uint16"
+                }
+            ],
+            "name": "getPaid",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "index",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getSubmissionAccount",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                }
+            ],
+            "name": "getTotalSubmissions",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint16"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getFscore",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getRecall",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "model_indexes",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "setPaid",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "name": "model_total",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint16"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                },
+                {
+                    "name": "_accuracy",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_precision",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_recall",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_fscore",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_score",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_accset",
+                    "type": "uint256[]"
+                },
+                {
+                    "name": "_uncset",
+                    "type": "uint256[]"
+                }
+            ],
+            "name": "submitData",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_account",
+                    "type": "address"
+                }
+            ],
+            "name": "getPrecision",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "index",
+                    "type": "uint16"
+                }
+            ],
+            "name": "getSubmission",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        }
+    ],
+    "contract_address": "0xFc5E7f64Cec67510Ea0689ED8f27e5A9A687cED6"
+}

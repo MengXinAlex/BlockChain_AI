@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content_block %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title text-info">My Wallet</h5>
+                <p class="category">Topup and Withdraw</p>
+            </div>
+            <div style="padding:10px;">
+          <p class="description">
+                BlockChain ID: &emsp;
+            <i class="fas fa-address-card"></i>
+            <b> {{ user.get_bc_acc }} </b>
+          </p>
+          <p class="description">
+              Balance: &emsp;&emsp;&emsp;&emsp;
+            <i class="fab fa-ethereum"></i> 
+            <b>{{ user.get_balance }}</b>
+          </p>
+          <div class="row">
+                <div class="card card-plain" style="margin-left:100px">
+                    <button data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-lg btn-fill">
+                      Topup
+                    </button>
+                        <button data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="btn btn-lg btn-fill">
+                          Withdraw
+                        </button>
+                  <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-body">
+                            Topup amount&emsp;&emsp;&emsp;<input></input>
+                            <button>conform</button>
+
+                    </div>
+                  </div>
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="card-body">
+                          Withdraw amount&emsp;<input></input>
+                            <button>conform</button>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        </div>
+        </div>
+    </div>
+
+
+    
+ 
+</div>
+{% endblock content_block %}

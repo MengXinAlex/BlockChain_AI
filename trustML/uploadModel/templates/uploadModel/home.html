@@ -1,0 +1,367 @@
+{% extends "interface.html" %}
+{% load static %}
+
+{% block content_block %}
+<div  class="loading_all"  id="imggg" style="display:none; z-index:9999">
+        <div style="left:500px; top: 50%">
+           <img src="{% static 'assets/img/loading.gif' %}" class="img-responsive" > 
+           Loading
+        </div>
+      </div>
+
+<div class="content">
+    {% if messages %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    <h4 class="card-title">Message!</h4>
+                    {% for message in messages %}
+                    {% if message.level == 40 %}
+                    <div class="alert alert-danger">
+                        <button type="button" aria-hidden="true" class="close">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                        <span> {{ message }}</span>
+                    </div>
+                    {% elif message.level == 25 %}
+                    <div class="alert alert-success">
+                        <button type="button" aria-hidden="true" class="close">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                        <span> {{ message }}</span>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" data-step="1" data-intro="Here are the models that you have uploaded."
+                data-position='right'>
+                <div class="card-header">
+                    <h5 class="title">My Model
+                        <button id="startButton" class="btn btn-info"
+                            style="height:40px;width:40px;position:relative;left:1080px;"> <span class="btn-label">
+                                <i class="now-ui-icons travel_info" style="height:40px;width:50px;right:24px;"
+                                    onclick="introJs().start()"></i>
+                            </span>
+                        </button>
+                    </h5>
+                    <script src="{% static 'intro.js-2.9.3/intro.js' %}"></script>
+                    <link href="{% static 'intro.js-2.9.3/introjs.css' %}" rel="stylesheet" type="text/css" />
+                    <p class="category">Click to see your model evaluation</p>
+                </div>
+                <div class="card-body all-icons">
+                    <div class="row">
+                        {# display all the model #}
+                        {% for model in model_sets %}
+                        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+                            {# TODO fill in href to display model #}
+                            <a class="hover" href="{% url "upload_model:model_detail" model.pk %}">
+                                <div class="font-icon-detail" onmouseover="MouseOver(this)" onmouseout="MouseOut(this)"
+                                    style="border-color:">
+                                    <i class="now-ui-icons design_app text-info"></i>
+                                    <p>{{ model.model_name }}</p>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" data-step="2" data-intro="You can also upload a new model here." data-position='right'>
+                <div class="card-header">
+                    <h5 class="title">Upload Model</h5>
+                    <p class="category">Upload new model here</p>
+                </div>
+                <div class="card-body">
+                    {# TODO add post action to new model page #}
+                    <form id="TypeValidation" method="post" enctype="multipart/form-data"
+                        action="{% url "upload_model:uploading" %}" class="form-horizontal">
+                        {% csrf_token %}
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">model name</label>
+                            <div class="col-sm-7">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="model_name" required="true">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">model file</label>
+                            <div class="col-sm-10">
+                                <div class="col-sm-2">
+                                    <div class="form-group"><span
+                                            class="btn btn-success fileinput-button"><span>Choose...</span>
+                                            <input name="model_file" id="model" type="file" onchange="uploadModel()">
+                                        </span>
+                                    </div>
+                                </div>
+                                <span class="form-text" id="modelStatus"></span>
+                                <span class="form-text">The model should be stored using
+                                    <code>joblib.dump()</code></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">specification</label>
+                            <div class="col-sm-10">
+                                <div class="col-sm-2">
+
+                                    <div class="form-group" id="modal-progress"><span
+                                            class="btn btn-success fileinput-button"><span>Choose...</span>
+                                            <input name="specification" id="specification" type="file" accept=".json"
+                                                onchange="uploadSpecification()">
+
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <span class="form-text" id="status"></span>
+                                <span class="form-text">The specification file should be stored as JSON file with each
+                                    feature stored as <code>feature:specification</code><span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Training Data</label>
+                            <div class="col-sm-10">
+                                <div class="col-sm-2">
+                                    <div class="form-group"><span
+                                            class="btn btn-success fileinput-button"><span>Choose...</span>
+                                            <input name="trainingData" type="file" id="data" accept=".csv"
+                                                onchange="uploadData()">
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <span class="form-text" id="dataStatus"></span>
+                                <span class="form-text">The training data file should be stored in csv format<span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Data Label</label>
+                            <div class="col-sm-10">
+                                <div class="col-sm-2">
+                                    <div class="form-group"><span
+                                            class="btn btn-success fileinput-button"><span>Choose...</span>
+                                            <input name="label" type="file" id="label" accept=".csv"
+                                                onchange="uploadLabel()">
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <span class="form-text" id="labelStatus"></span>
+                                <span class="form-text">List of labels to index the confusion matrix. The data label
+                                    file should be stored in csv format. <span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">split data</label>
+                            <div class="col-sm-7"> 
+                                <div class="form-group">
+                                    <input class="form-control" type="" name="split_data" required="true" style="width:100px;">
+                                    <span class="form-text" id="labelStatus"></span>
+                                    <span class="form-text">the precentage of uncertainty<span>
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <label class="col-sm-2 col-form-label">split model</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="split_model" required="true" style="width:100px;">
+                                        <span class="form-text" id="labelStatus"></span>
+                                        <span class="form-text">the precentage of data sampling during the test<span>
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        
+                        
+
+                        {#                            </div>#} {#                            <div class="row">#}
+                        {#                                <div class="col-sm-12">#}
+                        {#                                    <h5>Original Data</h5>#}
+                        {#                                </div>#} {#                            </div>#}
+                        {#                            <div class = "row">#}
+                        {#                                <label class="col-sm-2 col-form-label">data description</label>#}
+                        {#                                <div class="col-sm-7">#}
+                        {#                                    <div class="form-group">#}
+                        {#                                        <input class="form-control" type="text" name="description" required="false">#}
+                        {#                                        </input>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class = "row">#}
+                        {#                                <label class="col-sm-2 col-form-label">data file</label>#}
+                        {#                                <div class="col-sm-10">#}
+                        {#                                    <div class="col-sm-2">#}
+                        {#                                    <div class="form-group"><span class = "btn btn-success fileinput-button"><span>Choose...</span>#}
+                        {#                                        <input name = "data_file" type="file">#}
+                        {#                                    </span>#}
+                        {#                                    </div>#}
+                        {#                                    </div>#}
+                        {#                                    <span class="form-text">Original data set without header, the order of each data should follow specification order, the last column is always the actual label</span>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {# hidden value of data form #}
+                        {#                            <input type="hidden" value="OR" name="data_type"/>#}
+
+                        <input type="hidden" value="{{ user.pk }}" name="creator" />
+                        {#                            <input type="hidden" value = "{{ user.pk }}" name="uploader"/>#}
+                        {#                            <input type="hidden" value = 0 name="relative_model">#}
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-lg btn-primary btn-fill" data-step="3"
+                                        data-intro="after filling out the details, press submit to upload them into blockchain."
+                                        data-position='right' onclick="loadingtest()" >upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar" data-color="blue">
+    <!--  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"  -->
+    <div class="logo">
+        <a href="{% static '../admin_home' %}" class="simple-text logo-mini">
+            {{ user.email.0 }}{{ user.email.1 }}
+        </a>
+        <a href="#" class="simple-text logo-normal">
+            {{ user.get_short_name }}
+        </a>
+        <div class="navbar-minimize">
+            <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+                <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+                <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+            </button>
+        </div>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li>
+                <a href="{% static '../user_home' %}">
+                    <i class="now-ui-icons design_app"></i>
+                    <p>Models</p>   
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% static '../user_profile' %}">
+                    <i class="now-ui-icons users_single-02"></i>
+                    <p>Profile</p>
+                </a>
+            </li>
+
+            {% if request.path == "/wallet/" %}
+            <li class="active">
+          {% else %}
+            <li>
+          {% endif %}
+            <a href="{% static '../wallet' %}">
+              <i class="now-ui-icons business_money-coins"></i>
+              <p>My Wallet</p>
+            </a>
+          </li>
+
+            {#   if it's admin then show upload model     #}
+            {% if  user.get_is_buyer %}
+            <li>
+                <a href ="{% static '../buy_model' %}">
+                <i class = "now-ui-icons files_box"></i>
+                <p>Model Shop</p>
+                </a>
+            </li>
+            {% endif %}
+
+            {% if  user.get_is_staff %}
+            <li class="active">
+                <a href="{% url 'upload_model:home' %}">
+                    <i class="now-ui-icons files_box"></i>
+                    <p>My Model</p>
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <a href="{% static '../help' %}">
+                    <i class="now-ui-icons location_map-big"></i>
+                    <p>Help</p>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">
+                    <i class="now-ui-icons media-1_button-power"></i>
+                    <p>Log Out</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    function _(el) {
+        return document.getElementById(el);
+    }
+
+    function uploadSpecification() {
+
+        var file = _("specification");
+        _("status").innerHTML = file.value + "% successfully uploaded";
+
+
+    }
+
+    function uploadData() {
+
+        var file = _("data");
+        _("dataStatus").innerHTML = file.value + "% successfully uploaded";
+
+
+    }
+
+    function uploadModel() {
+
+        var file = _("model");
+        _("modelStatus").innerHTML = file.value + "% successfully uploaded";
+
+
+    }
+    function uploadLabel() {
+
+        var file = _("label");
+        _("labelStatus").innerHTML = file.value + "% successfully uploaded";
+
+
+    }
+
+</script>
+ <script>
+
+        function loadingtest()
+        {
+          $('#imggg').show();
+        }
+        window.onload = function() {
+          document.getElementById('imggg').style.display = 'none';
+        };
+              </script>
+        
+{% endblock %}

@@ -1,0 +1,10 @@
+py_solc
+matplotlib
+web3
+numpy
+pandas
+tensorflow
+Django
+scikit_learn
+Pillow
+opencv-python

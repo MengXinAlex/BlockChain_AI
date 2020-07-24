@@ -1,0 +1,10 @@
+python3 test_getAccuracy.py
+python3 test_getPrecision.py
+python3 test_getRecall.py
+python3 test_getRank.py
+python3 test_getAdmin_submission.py
+python3 test_getSubmissionAccount.py
+python3 test_getTotalSubmissions.py
+python3 test_getSubmission.py
+python3 test_tryTransfer.py
+python3 test_integration.py

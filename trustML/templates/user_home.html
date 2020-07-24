@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content_block %}
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title text-info">Models
+          <button id="startButton" class="btn btn-info" style="height:40px;width:40px;position:relative;left:1109px;"
+            onclick="introJs().start()"> <span class="btn-label">
+              <i class="now-ui-icons travel_info" style="height:40px;width:50px;right:24px;"></i>
+            </span>
+          </button>
+        </h5>
+        <p class="category">Choose a model and start to evaluate your data.</p>
+        <div class="card-body all-icons" data-step="1"
+          data-intro="Here are the models that you can choose to upload your data." data-position='right'>
+          <div class="row">
+
+            <script src="{% static 'intro.js-2.9.3/intro.js' %}"></script>
+            <link href="{% static 'intro.js-2.9.3/introjs.css' %}" rel="stylesheet" type="text/css" />
+            <script type="text/javascript">
+              document.getElementById('startButton').onclick = function () {
+                introJs().setOption('doneLabel', 'Next page').start().oncomplete(function () {
+                  window.location.href = '/models/model_detail/60/';
+                });
+              };
+            </script>
+
+            {# display all the models #}
+            {% for model in model_sets %}
+            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+              {# TODO fill in href to display model #}
+              <a class="hover text-info" href="{% url "upload_model:model_detail" model.pk %}">
+                <div class="font-icon-detail" onmouseover="MouseOver(this)" onmouseout="MouseOut(this)" data-step="2"
+                  data-intro="Choose a model to see more detail and upload your data." data-position='right'>
+                  <i class="now-ui-icons design_app text-info"></i>
+                  <p>{{ model.model_name }}</p>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endblock content_block %}

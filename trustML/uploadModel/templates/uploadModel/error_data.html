@@ -1,0 +1,87 @@
+{% extends "interface.html" %}
+{% load static %}
+
+{% block content_block %}
+    <div class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="title">Error</h5>
+                        <p class="category">Data type incompatible</p>
+                    </div>
+                    <div class="card-body all-icons">
+                        <div class="row">
+                            {# display all the model #}
+                            {% for model in model_sets %}
+                                <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+                                    {# TODO fill in href to display model #}
+                                    <a class="hover" href="{% url "upload_model:model_detail" model.pk %}">
+                                        <div class="font-icon-detail" onmouseover="MouseOver(this)"
+                                             onmouseout="MouseOut(this)" style="border-color:">
+                                            <i class="now-ui-icons design_app text-info"></i>
+                                            <p>{{ model.model_name }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="sidebar" data-color="data61">
+        <!--  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"  -->
+        <div class="logo">
+            <a href="{% static '../admin_home' %}" class="simple-text logo-mini">
+                {{ user.email.0 }}{{ user.email.1 }}
+            </a>
+            <a href="#" class="simple-text logo-normal">
+                {{ user.get_short_name }}
+            </a>
+            <div class="navbar-minimize">
+                <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+                    <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+                    <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+                </button>
+            </div>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li>
+                    <a href="{% static '../user_home' %}">
+                        <i class="now-ui-icons design_app"></i>
+                        <p>Models</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% static '../user_profile' %}">
+                        <i class="now-ui-icons users_single-02"></i>
+                        <p>Profile</p>
+                    </a>
+                </li>
+                {#   if it's admin then show upload model     #}
+                {% if  user.get_is_staff %}
+                    <li class="active">
+                        <a href="{% url 'upload_model:home' %}">
+                            <i class="now-ui-icons files_box"></i>
+                            <p>My Model</p>
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="now-ui-icons media-1_button-power"></i>
+                        <p>Log Out</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

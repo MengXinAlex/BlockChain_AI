@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Trustworthy AI | Login</title>
+	
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+    
+    <link rel="stylesheet" href="{% static 'assets/css/flexslider.css' %}" type="text/css" media="all" /><!-- for testimonials -->
+    
+	<!-- css files -->
+	<link rel="icon" type="image/png"  href="{% static 'assets/img/icon_s.png' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS --> 
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.css' %}"> <!-- Font-Awesome-Icons-CSS -->
+
+	<!-- <link rel="stylesheet" href="{% static 'assets/css/now-ui-dashboard.css' %}"> -->
+	<!-- //css files -->
+
+	<!-- web-fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!-- //web-fonts -->
+	
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'assets/css/dmaku2.css' %}"> -->
+</head>
+
+<body>
+
+<!--Header-->
+<header>
+	<div class="container agile-banner_nav">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			
+			<a class="navbar-brand" href="{% static '../index' %}"><span class="display">BlockChain technology boosting</span>Trustworthy AI </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+							
+						<a class="nav-link" href="{% static '../index' %}">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% static '../services' %}">Services</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% static '../login' %}">Login</a>
+					</li>					
+					<li class="nav-item">
+						<a class="nav-link" href="{% static '../contact' %}">Contact</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="{% static '../about' %}">About</a>
+						</li>
+				</ul>
+			</div>
+		  
+		</nav>
+	</div>
+</header>
+<!--Header-->
+
+<!-- inner page banner-->
+<div class="inner-banner" style="background: url('/static/assets/img/banner1.jpg')">
+	
+</div>
+<!-- //inner page banner-->
+
+
+
+
+<div class="content">
+	<div class="container">
+	  <div class="col-md-5 ml-auto mr-auto">
+
+		<form class="form" method="post">
+		  {% csrf_token %}
+		  <div class="card card-login card-plain">
+			<div class="card-header ">
+			  <h4 class="card-title">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTrustworthy AI</h4>
+			</div>
+			<div class="card-body ">
+			  <div class="input-group no-border form-control-lg">
+				<span class="input-group-prepend">
+				  <div class="input-group-text">
+					<i class="now-ui-icons ui-1_email-85">email&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</i>
+				  </div>
+				</span>
+				<p class="form-control" style="padding-right:5px;"> {{ form.username }} </p>
+			  </div>
+			  <div class="input-group no-border form-control-lg">
+				<div class="input-group-prepend">
+				  <div class="input-group-text">
+					<i class="now-ui-icons objects_key-25">password</i>
+				  </div>
+				</div>
+				<p class="form-control"> {{ form.password }} </p>
+			  </div>
+			</div>
+			<div class="card-footer ">
+			  <button type="submit" class="btn btn-info btn-round btn-lg btn-block mb-3">Login</button>
+			  <div class="pull-right">
+				<h6>
+				  <a href="/signup" class="link footer-link">Create Account</a>
+				</h6>
+			  </div>
+
+			  {% if form.non_field_errors %}
+			  <br>
+			  <div class='form-errors'>
+				{% for error in form.non_field_errors %}
+				<p style="color:white;">{{ error }}</p>
+				{% endfor %}
+			  </div>
+			  {% endif %}
+
+			</div>
+		  </div>
+		</form>
+	  </div>
+	</div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer -->	
+<footer>
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<h3 class="text-uppercase mb-3">Address</h3>
+					<address>
+							<p><strong>Headquarters:</strong></p>
+							<p class="mb-3">Building 11 University of Technology Sydney 81, Broadway, Ultimo NSW 2007</p>
+							<p><strong>Phone</strong> : +61 434 450 149</p>
+							<p><strong>Email</strong> : <a href="mailto:xianfeng19971117@gmail.com">xianfeng19971117@gmail.com</a></p>
+						</address>
+				</div>
+				<div class="col-lg-2 col-md-6 mt-lg-0 mt-sm-0 mt-4 p-md-0">
+					<h3 class="text-uppercase mb-3">links</h3>
+					<div class="links">
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Navigation</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Documentation</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Business</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Technical support</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> 24/7 Service</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Feedback</a>
+					</div>	
+				</div>
+				<div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
+					<h3 class="text-uppercase mb-3">Recent posts</h3>
+					<div class="posts">
+							<p class="pt-2">Updated Interface
+							<span class="font-italic">13rd June, 2019.</span></p>
+							<p class="py-2 my-2 middle">Optimized data analysis
+							<span class="font-italic">10th June, 2019.</span></p>
+							<p class="pt-2">Updated user relationship
+							<span class="font-italic">8th June, 2019.</span></p>
+						</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+					<h3 class="text-uppercase mb-3">Newsletter</h3>
+					<p class="mb-4 pt-2">Subscribe to Our Newsletter to get Important News, Amazing Offers & More</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<button class="btn1"><i class="far fa-envelope"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</footer>
+<!-- footer -->
+
+
+
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="exampleModalLongTitle"> Trustworthy AI</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/help3.png' %}" class="img-fluid mb-3" alt="Modal Image" />
+		This results in the output of different model performance metrics between the ML model and user data, ultimately computing reports such as the analysis of accuracy, precision, suitability comparisons. The whole lifecycle of the blockchain process can be summarized in six simple stages using the following user storyboard.
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- //Vertically centered Modal -->
+
+<!-- js-scripts -->		
+
+
+
+    <!-- js -->
+	<script type="text/javascript" src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/bootstrap.js' %}"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+	<!-- //js -->	
+	
+	<!-- odometer-script -->
+	<script src="{% static 'assets/js/odometer.js' %}"></script>
+	<script>
+		window.odometerOptions = {
+			format: '(ddd).dd'
+		};
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats1').html(64);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats2').html(330);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats3').html(25);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats4').html(92);
+		}, 1500);
+	</script>
+	<!-- //odometer-script -->
+    
+	<!-- start-smoth-scrolling -->
+	<script src="{% static 'assets/js/SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/easing.js' %}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- start-smoth-scrolling -->
+	
+	<!-- FlexSlider-JavaScript -->
+	<script defer src="{% static 'assets/js/jquery.flexslider.js' %}"></script>
+	<script type="text/javascript">
+		$(function(){
+			SyntaxHighlighter.all();
+				});
+				$(window).load(function(){
+				$('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider){
+						$('body').removeClass('loading');
+					}
+			});
+		});
+	</script>
+	<!-- //FlexSlider-JavaScript -->
+<!-- //js-scripts -->
+
+</body>
+</html>

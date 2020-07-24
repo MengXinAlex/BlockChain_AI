@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Trustworthy AI
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- CSS Files -->
+
+
+  <link rel="icon.png" sizes="76x76"  href="{% static 'assets/img/icon_s.png' %}">
+  <link rel="icon" type="image/png"  href="{% static 'assets/img/icon_s.png' %}">
+  <link rel="stylesheet"  href="{% static 'assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet"  href="{% static 'assets/css/now-ui-dashboard.css' %}">
+  <link rel="stylesheet"  href="{% static 'assets/demo/demo.css' %}">
+
+  <style type="text/css">
+    #box {
+    margin:auto;
+    height:800px;
+    width:1500px;
+    }
+    .top {
+    height:0px;
+    width:600px;
+    }
+    .bottom {
+    height:600px;
+    width:600px;
+    float:left;
+    }
+      /* 清除样式 */
+      *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 坐标样式 */
+        .axis path, .axis line{
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+        .axis text{
+            font-family: sans-serif;
+            font-size: 11px;
+        }
+        /* 功能按钮 */
+        .btnWrap{
+            margin-left: 140px;
+            margin-top: 10px;
+        }
+    </style>
+    
+   
+</head>
+
+<body class=" sidebar-mini ">
+    <!-- <img src="{% static 'assets/img/banner.jpg' %}" id="imggg" style="display:none" > -->
+
+      <div  class="loading_all"  id="imggg" style="display:none; z-index:9999">
+        <div align="center" style="text-align:center;line-height:800px;">
+           <img src="{% static 'assets/img/loading.gif' %}" class="img-responsive" style='vertical-align:middle'> 
+           Loading
+        </div>
+      </div>
+      <script>
+
+function loadingtest()
+{
+  $('#imggg').show();
+}
+window.onload = function() {
+  document.getElementById('imggg').style.display = 'none';
+};
+      </script>
+
+<div class="wrapper ">
+    <div class="sidebar" data-color="data61">
+      <!--  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"  -->
+      <div class="logo">
+        <a href="{% static '../admin_home' %}" class="simple-text logo-mini">
+          {{ user.email.0 }}{{ user.email.1 }}
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          {{ user.get_short_name }}
+        </a>
+        <div class="navbar-minimize">
+          <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+            <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+            <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+          </button>
+        </div>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a class = "active" href="{% static '../user_home' %}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Models</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="{% static '../user_profile' %}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+
+          {% if request.path == "/wallet/" %}
+            <li class="active">
+          {% else %}
+            <li>
+          {% endif %}
+            <a href="{% static '../wallet' %}">
+              <i class="now-ui-icons business_money-coins"></i>
+              <p>My Wallet</p>
+            </a>
+          </li>
+
+
+        {#   if it's admin then show upload model     #}
+        {% if  user.get_is_buyer %}
+        <li>
+            <a href ="{% static '../buy_model' %}">
+            <i class = "now-ui-icons files_box"></i>
+            <p>Model Shop</p>
+            </a>
+        </li>
+        {% endif %}
+        {% if  user.get_is_staff %}
+          <li>
+              <a href="{% url 'upload_model:home' %}">
+              <i class = "now-ui-icons files_box"></i>
+              <p>My Model</p>
+              </a>
+          </li>
+          {% endif %}
+        <li>
+          <a href="{% static '../help' %}">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Help</p>
+          </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">
+              <i class="now-ui-icons media-1_button-power"></i>
+              <p>Log Out</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<div class="main-panel">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute bg-primary ">
+  <div class="container-fluid">
+    <div class="navbar-wrapper"> <a class="navbar-brand" href="#">Models</a> </div>
+
+  </div>
+</nav>
+<!-- End Navbar -->
+
+<div class="panel-header panel-header-sm"> </div>
+<div class="content">
+  {% if messages %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h4 class="card-title">Submission Result</h4>
+          {% for message in messages %}
+          <h5 class="title text-info">{{message}}</h5>
+          {% endfor %}
+  </div></div></div></div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+            <div class="row">
+                <div class="col-md-6">
+                  {% load tz %}
+                  {% timezone "Australia/Melbourne" %}
+                    <h4 class="card-title">{{model.model_name}}<small class="description"> {{ model.creation_time }}</small> </h4>
+                  {% endtimezone %}
+
+                </div>
+                <div class="col-md-4"></div>
+
+                {% if user.get_is_staff %}
+                <div class="col-md-2">
+                    <button class="btn btn-danger btn-round">
+                        <span class="btn-label">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </span>
+                        <a href ="{% url "upload_model:delete_model" model.pk %}" style="color:white;">Delete Model</a>
+                    </button>
+                </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+        <div class="card-body">
+          <ul class="nav nav-pills nav-pills-primary" role="tablist">
+            {% if I_am_creator%}
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#link2" role="tablist"> Your data results </a> </li>
+            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist"> All data results </a> </li>
+            {% else %}
+            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#link2" role="tablist"> Your data results </a> </li>
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#link1" role="tablist"> All data results </a> </li>
+            {% endif %}
+          </ul>
+          <div class="tab-content tab-space">
+            {% if I_am_creator %}
+            <div class="tab-pane active" id="link1">
+            {% else %}
+            <div class="tab-pane" id="link1">
+            {% endif %}
+
+
+              {% if data_submitted %}
+                {% comment %} <div style="position:relative; left:120px; width:900px;">This page shows the model performance of all tested data.<br /><br /> </div> {% endcomment %}
+                <h5 class="title"></br></br>Average model performance of all tested data</h5>
+              <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                  <canvas id="chart1" width="100" height="100"></canvas>
+                </div>
+                <div class="col-md-4">
+                  <table class="table">
+                    <tbody>
+                      <tr class="table-info">
+                        <td>
+                          Accuracy
+                        </td>
+                        <td>
+                          Precision
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{ average_acc|floatformat:2 }}
+                        </td>
+                        <td>
+                          {{ average_pre|floatformat:2 }}
+                        </td>
+                      </tr>
+                      <tr class="table-info">
+                        <td>
+                          Recall
+                        </td>
+                        <td>
+                          F1 Score
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{ average_rec|floatformat:2 }}
+                        </td>
+                        <td>
+                          {{ average_f1|floatformat:2 }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <h5 class="title"></br></br>Model performance of all invidual tested data</h5>
+              <div class="row">
+                <div class="col-md-3">
+                  <canvas id="chart2" width="100" height="100"></canvas>
+                </div>
+                <div class="col-md-3">
+                  <canvas id="chart3" width="100" height="100"></canvas>
+                </div>
+                <div class="col-md-3">
+                 <canvas id="chart4" width="100" height="100"></canvas>
+                </div>
+                <div class="col-md-3">
+                  <canvas id="chart5" width="100" height="100"></canvas>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="card card-plain">
+                  <div class="card-header" role="tab" id="headingOne">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      More Info
+                      <i class="now-ui-icons arrows-1_minimal-down"></i>
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-body">
+                      <table class="table text-center">
+                        <thead class=" text-primary">
+                          <th>Score</th>
+                          <th>Wallet Address</th>
+                          <th>Accuracy</th>
+                          <th>Precision</th>
+                          <th>Recall</th>
+                          <th>F1 Score</th>
+                          <th>model score</th>
+                          <th>data score</th>
+                          {% if I_am_creator %}
+                          <th>Pay</th>
+                          {% endif %}
+                        </thead>
+                        <tbody>
+
+                            {% for result in results %}
+                              <tr>
+                                <td>{{result.1.4}}</td>
+                                <td>{{result.0}}</td>
+                                <td>{{result.1.0 | floatformat:2}}</td>
+                                <td>{{result.1.1 | floatformat:2}}</td>
+                                <td>{{result.1.2 | floatformat:2}}</td>
+                                <td>{{result.1.3 | floatformat:2}}</td>
+                                {% if data.model_score == 0 %}
+                                <td>not submitted</td>
+                                <td>not submitted</td>
+                                {% else %}
+                                <td>{{data.model_score}}</td>
+                                <td>{{data.data_score}}</td>
+                                {% endif %}
+                                {% if I_am_creator and not result.2 %}
+                                  <td><a class ="btn btn-success fileinput-button" href="{% url 'upload_model:reward' result.0 model.pk result.1.4%}">Pay</a></td>
+
+                                {% endif %}
+                              </tr>
+                            {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    
+
+
+
+
+                  </div>
+                </div>
+              </div>
+
+              
+
+              {% else %}
+              <h2>No users have uploaded data for this model</h2>
+              {% endif %}
+
+            </div>
+
+            {% if I_am_creator %}
+            <div class="tab-pane" id="link2">
+            {% else %}
+            <div class="tab-pane active" id="link2">
+            {% endif %}
+
+
+            {% if user_data_exists  %}
+
+          </br>
+          <h5 class="title">Model performance of the current data</h5>
+      </br>
+
+              <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                  <canvas id="chart6" width="100" height="100"></canvas>
+                </div>
+                <div class="col-md-4">
+                  <div class="progress-container progress-primary">
+                    <span class="progress-badge">Accuracy</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ user_accuracy|floatformat:2 }}%;">
+                        <span class="progress-value">{{ user_accuracy|floatformat:2 }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="progress-container progress-primary">
+                    <span class="progress-badge">Precision</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ user_precision|floatformat:2 }}%;">
+                        <span class="progress-value">{{ user_precision|floatformat:2 }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="progress-container progress-primary">
+                    <span class="progress-badge">Recall</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ user_recall|floatformat:2 }}%;">
+                        <span class="progress-value">{{ user_recall|floatformat:2 }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="progress-container progress-primary">
+                    <span class="progress-badge">F1 Score</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ user_f1_score|floatformat:2 }}%;">
+                        <span class="progress-value">{{ user_f1_score|floatformat:2 }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div id="gg" style="position:relative; left:400px;"></div> -->
+
+               
+            
+    <h5 class="title"></br></br>Relations between model accuracy and model uncertainty</h5>               
+              <div id="box">
+                  <div class="top">
+                      <div id="notes-UAD" style="position:relative; left:120px; width:900px;">Part of the data is randomly selected to test the model each time. 
+                          Such random selection of the data and the testing of the model are conducted for many times. A series of model accuracy 
+                          and model uncertainty are derived. These model accuracy and model uncertainty pairs are displayed in the "Uncertaity-Accuracy" 
+                          diagram as the following.<br /><br /> 
+                      </div>
+                      <div id="echarts2" style="position:relative; top:260px; left:755px; width: 560px;height:150px;transform: rotate(90deg); transform-origin: 50% 50% 0px;"></div>   
+                      <div id="echarts3" style="position:relative; top:-130px; left:120px; width: 995px;height:150px;"></div>
+                </div>
+                <div class="bottom">
+                    <div id="echarts1" style="position:relative; top:50px; left:120px; width: 1000px;height:600px;"></div>
+                      
+                </div>
+              </div>
+
+
+            <h5 class="title">Feedback on the data and model</h5>
+            </br>              
+                  <form class="form" method="post" enctype="multipart/form-data" action ="{% url "upload_model:upload_data_evaluate" data.pk %}">
+                {% csrf_token %}
+            <div class="row" style="margin-left:130px;">
+                
+                <!-- <label class="col-sm-2 col-form-label">Please rate your opinion on your data and model after reading the above “Uncertainty-Accuracy” diagram</label> -->
+                <div style="margin-left:0px;">How much do you rate the quality of your data based on analysis results as shown in the “Uncertainty-Accuracy” diagram above?<br /><br /> </div>
+                <div class="col-sm-12"> 
+                    <div class="form-group">
+                      <!-- <label class="col-md-8 col-form-label">I want to be a data provider:</label> -->
+                        <!-- <input class="form-control" type="" name="model_score" required="true" style="width:100px;"> -->
+                    <input type="radio" name="model_score" value="1"><label class="col-md-0">Very low quality&emsp;</label>
+                                <input type="radio" name="model_score" value="2"><label class="col-md-0">Low quality&emsp;</label>
+                    <input type="radio" name="model_score" value="3"><label class="col-md-0">Somewhat low quality&emsp;</label>
+                    <input type="radio" name="model_score" value="4" checked><label class="col-md-0">Neutral&emsp;</label>
+                    <input type="radio" name="model_score" value="5"><label class="col-md-0">Somewhat high quality&emsp;</label>
+                    <input type="radio" name="model_score" value="6"><label class="col-md-0">High quality&emsp;</label>
+                    <input type="radio" name="model_score" value="7"><label class="col-md-0">Very high quality&emsp;</label>
+                        <span class="form-text" id="labelStatus"></span>
+                        <span class="form-text"><label class="col-md-0">(Quality levels: 1-7)</label><span>
+                        </input>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-left:130px;">
+                <div style="margin-left:0px;">How much trust do you have in the model based on results from your data?<br /><br /> </div>
+                <!-- <label class="col-sm-2 col-form-label"></label> -->
+                <div class="col-sm-10"> 
+                    <div class="form-group">
+                      <form>
+                        <!-- <input class="form-control" type="" name="data_score" required="true" style="width:100px;"> -->
+                        <input type="radio" name="data_score" value="1"><label class="col-md-0">Very low trust&emsp;</label>
+                                <input type="radio" name="data_score" value="2"><label class="col-md-0">Low trust&emsp;</label>
+                    <input type="radio" name="data_score" value="3"><label class="col-md-0">Somewhat low trust&emsp;</label>
+                    <input type="radio" name="data_score" value="4" checked><label class="col-md-0">Neutral&emsp;</label>
+                    <input type="radio" name="data_score" value="5"><label class="col-md-0">Somewhat high trust&emsp;</label>
+                    <input type="radio" name="data_score" value="6"><label class="col-md-0">High trust&emsp;</label>
+                    <input type="radio" name="data_score" value="7"><label class="col-md-0">Very high trust&emsp;</label>
+                        <span class="form-text" id="labelStatus"></span>
+                        <span class="form-text"><label class="col-md-0">(Trust levels: 1-7)</label><span>
+                      
+                      </form>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <div class="form-group" style="margin-left:3Geometric00px;">
+                        <button name = "upload_data_evaluate" type="submit" class="btn btn-lg btn-primary btn-fill" data-step="1"
+                            data-intro="after filling out the evaluated score, press submit to upload them into blockchain."
+                            data-position='right'>Submit</button>
+                    </div>
+                </div>
+              </div>
+            </form>
+            
+              <!-- <div class="row">
+                <div class="card card-plain">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                      Uncertainty and Accuracy gggg
+                      <i class="now-ui-icons arrows-1_minimal-down"></i>
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-body">
+                      <table class="table text-center">
+                          <div>accset:{{user_accset}}</div>
+                          <div>uncset:{{user_uncset}}</div>
+                          <div>au:{{user_au}}</div>
+                          <div>ua:{{user_ua}}</div>
+                          <div>dataset:{{data_sets}}</div>
+
+
+                      
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+
+
+
+
+            {% else %}
+            <h2>You have not uploaded any data.</h2>
+            {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if user_data_exists %}
+  You have already uploaded data.
+  {% else %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h4 class="card-title">Upload Data</h4>
+        </div>
+
+        <div class="card-body ">
+            <div class = "row">
+                <div class = "col-sm-12">
+                model specification
+                </div>
+            </div>
+            {% for key,value in md_specification.items %}
+                <div class = "row">
+                    <div class = "col-sm-3">
+                      {{ key }}
+                    </div>
+                    <div class = "col-sm-9">
+                        {{ value }}
+                    </div>
+            </div>
+            {% endfor %}
+            <div>split data:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;{{ split_data|floatformat:2 }}</div>
+            <div>split model:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;{{ split_model|floatformat:2 }}</div>
+           
+            <form  method = "post" enctype="multipart/form-data" action ="{% url "upload_model:upload_data" %}" class="form-horizontal">
+            {% csrf_token %}
+            <div class = "row">
+                <label class="col-sm-2 col-form-label">data description</label>
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="description" required="false">
+                        </input>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <label class="col-sm-2 col-form-label">data file</label>
+                <div class="col-sm-10">
+                    <div class="col-sm-2">
+                        <div class="form-group"><span class = "btn btn-success fileinput-button"><span>Choose...</span>
+                                        <input name = "data_file" type="file" accept=".csv" id = "dataup" onchange="uploadData()">
+                                    </span>
+                        </div>
+                    </div>
+                    <span class="form-text" id="dataStatus"></span>
+                    <span class="form-text">Original data set without header, the order of each data should follow specification order, the last column is always the actual label</span>
+                </div>
+            </div>
+            {#hidden input#}
+            <input type = "hidden" name ="data_type" value="{% if user.get_is_staff %}OR{% else %}TE{% endif %}"/>
+            <input type = "hidden" name ="uploader" value ="{{ user.pk }}"/>
+            <input type = "hidden" name = "relative_model" value="{{ model.pk }}">
+            <div class="row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class ="col-sm-10">
+                    <div class = "form-group">
+                        <button type="submit" class = "btn btn-lg btn-primary btn-fill"  onclick="loadingtest()">upload</button> 
+                    </div>
+                </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+
+  </div>
+
+
+
+</div>
+<!--   Core JS Files   -->
+<script src="{% static 'assets/js/core/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/js/core/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/core/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/moment.min.js' %}"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="{% static 'assets/js/plugins/bootstrap-switch.js' %}"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="{% static 'assets/js/plugins/sweetalert2.min.js' %}"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="{% static 'assets/js/plugins/jquery.validate.min.js' %}"></script>
+  <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="{% static 'assets/js/plugins/jquery.bootstrap-wizard.js' %}"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="{% static 'assets/js/plugins/bootstrap-selectpicker.js' %}"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="{% static 'assets/js/plugins/bootstrap-datetimepicker.js' %}"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+  <script src="{% static 'assets/js/plugins/jquery.dataTables.min.js' %}"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="{% static 'assets/js/plugins/bootstrap-tagsinput.js' %}"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="{% static 'assets/js/plugins/jasny-bootstrap.min.js' %}"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="{% static 'assets/js/plugins/fullcalendar.min.js' %}"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="{% static 'assets/js/plugins/jquery-jvectormap.js' %}"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="{% static 'assets/js/plugins/nouislider.min.js' %}"></script>
+  <!-- Chart JS -->
+  <script src="{% static 'assets/js/plugins/chartjs.min.js' %}"></script>
+  <!--  Notifications Plugin    -->
+  <script src="{% static 'assets/js/plugins/bootstrap-notify.js' %}"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'assets/js/now-ui-dashboard.min.js' %}" type="text/javascript"></script>
+  <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+  <script src="{% static 'assets/demo/demo.js' %}"></script>
+  <script src="{% static 'assets/js/echarts.common.js' %}"></script>
+  <script src="{% static 'assets/js/ecStat.js' %}"></script>
+  <script src="{% static 'assets/js/d3.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.js' %}"></script>
+  <script>
+    function _(el) {
+        return document.getElementById(el);
+    }
+  function uploadData() {
+
+    var file = _("dataup");
+    _("dataStatus").innerHTML = file.value + "% successfully uploaded";
+
+
+}
+</script>
+
+
+
+<script>
+var ctx = document.getElementById("chart1").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ["Accuracy", "Precision", "Recall", "F1 Score"],
+        datasets: [{
+            label: 'Average Model Performance',
+            data: [{{ average_acc }}, {{ average_pre |floatformat:2 }}, {{ average_rec |floatformat:2 }}, {{ average_f1|floatformat:2 }}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+		scale: {
+			ticks: {
+				beginAtZero: true
+			}
+		}
+	}
+});
+</script>
+<script>
+var ctx = document.getElementById("chart2").getContext('2d');
+var myChart = new Chart(ctx, {
+	type: 'line',
+	data: {
+		labels: {{ sub_list }},
+		datasets: [{
+			label: 'Accuracy',
+			backgroundColor: [
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)'
+            ],
+			data: {{ acc_list }},
+			fill: true,
+      borderWidth: 2
+		}]
+	},
+	options: {
+		responsive: true,
+    scales: {
+			yAxes: [{
+				ticks: {
+          min: 0,
+					max: 100
+				},
+        scaleLabel: {
+					display: true,
+					labelString: 'Performance (%)'
+				}
+			}],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Test Data Index'
+        }
+      }]
+		}
+	}
+});
+</script>
+<script>
+var ctx = document.getElementById("chart3").getContext('2d');
+var myChart = new Chart(ctx, {
+	type: 'line',
+	data: {
+		labels: {{ sub_list }},
+		datasets: [{
+			label: 'Precision',
+			backgroundColor: [
+                'rgba(255, 206, 86, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 206, 86, 1)'
+            ],
+			data: {{ pre_list }},
+			fill: true,
+		}]
+	},
+	options: {
+		responsive: true,
+    scales: {
+			yAxes: [{
+				ticks: {
+          min: 0,
+					max: 100
+				},
+        scaleLabel: {
+					display: true,
+					labelString: 'Performance (%)'
+				}
+			}],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Test Data Index'
+        }
+      }]
+		}
+	}
+});
+</script>
+<script>
+var ctx = document.getElementById("chart4").getContext('2d');
+var myChart = new Chart(ctx, {
+	type: 'line',
+	data: {
+		labels: {{ sub_list }},
+		datasets: [{
+			label: 'Recall',
+			backgroundColor: [
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(75, 192, 192, 1)'
+            ],
+			data: {{ rec_list }},
+			fill: true,
+		}]
+	},
+	options: {
+		responsive: true,
+    scales: {
+			yAxes: [{
+				ticks: {
+          min: 0,
+					max: 100
+				},
+        scaleLabel: {
+					display: true,
+					labelString: 'Performance (%)'
+				}
+			}],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Test Data Index'
+        }
+      }]
+		}
+	}
+});
+</script>
+<script>
+var ctx = document.getElementById("chart5").getContext('2d');
+var myChart = new Chart(ctx, {
+	type: 'line',
+	data: {
+		labels: {{ sub_list }},
+		datasets: [{
+			label: 'F1 Score',
+			backgroundColor: [
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)'
+            ],
+			data: {{ f1_list }},
+			fill: true,
+		}]
+	},
+	options: {
+		responsive: true,
+    scales: {
+			yAxes: [{
+				ticks: {
+					min: 0,
+					max: 100
+				},
+        scaleLabel: {
+        	display: true,
+        	labelString: 'Performance (%)'
+        }
+			}],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Test Data Index'
+        }
+      }]
+		}
+	}
+});
+</script>
+<script>
+var ctx = document.getElementById("chart6").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ["Accuracy", "Precision", "Recall", "F1 Score"],
+        datasets: [{
+            label: 'Model Performance',
+            data: [{{ user_accuracy }}, {{ user_precision|floatformat:2 }}, {{ user_recall|floatformat:2 }}, {{ user_f1_score|floatformat:2 }}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+		scale: {
+			ticks: {
+				beginAtZero: true
+			}
+		}
+	}
+});
+</script>
+
+
+
+<script>
+  var myChart = echarts.init(document.getElementById('echarts1'));
+  
+  function max(a, b) {
+    if(a>b)
+    return a;
+    return b;
+} 
+function min(a, b) {
+    if(a>b)
+    return b;
+    return a;
+} 
+function dataMinx() {
+   return {{user_au}}[0][0] - 0.5
+} 
+function dataMaxx() {
+   return {{user_au}}[29][0] + 0.5
+}
+function dataMiny() {
+   return {{user_ua}}[0][1] - 0.5
+} 
+function dataMaxy() {
+   return {{user_ua}}[29][1] + 0.5
+}
+
+function neg_dataMiny() {
+   return -({{user_ua}}[0][1] - 0.5)
+} 
+function neg_dataMaxy() {
+   return -({{user_ua}}[29][1] + 0.5)
+}
+  var option = {
+      title: {
+          text: 'Uncertainty & Accuracy',
+          left: 'center',
+          bottom: 50
+      },
+      tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+		            return 'Accuracy: ' + params.data[1] + '<br>Uncertainty: ' + params.data[0];
+		        },
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        grid: {
+        bottom: 90
+    },
+     dataZoom: [{
+        type: 'slider',
+        startValue:max(dataMinx(),0),
+        endValue:min(dataMaxx(),100)  
+     },
+     {
+        type: 'slider',
+        left: 0,
+        yAxisIndex: 0,
+        startValue:max(dataMiny(),0),
+        endValue:min(dataMaxy(),100)  
+     }
+     ],
+        xAxis: [{
+          min:0,
+            max:100,
+          name: "Uncertainty",
+            type: 'value'
+        }],
+        yAxis: [{
+          min:0,
+            max:100,
+          name: "Accuracy",
+            type: 'value'
+        }],
+      
+        series: [{
+            type: 'scatter',
+            
+            data: {{user_au}}
+          
+         }]
+  };
+
+  var myChart3 = echarts.init(document.getElementById('echarts3'));
+    var unc = {{user_uncset}};
+    var uncset = ecStat.histogram(unc);
+    var option3 = {
+          dataZoom: [{
+            show: false,
+            startValue:max(dataMinx(),0),
+        endValue:min(dataMaxx(),100),
+        type: 'slider'
+     }],
+          xAxis: {
+            min:0,max:100,
+            show: false,
+        type: 'value',
+            },
+            yAxis: {
+              min:0,max:30,
+              show: false,
+        type: 'value',
+        //boundaryGap: 0
+            },
+            series: [{
+              
+              //barMaxWidth : 20,
+              barCategoryGap:0,
+                name: 'Uncertainty',
+                type: 'bar',
+                icon: 'circle',
+                data: uncset.data
+            }]
+    };
+    myChart3.setOption(option3);
+//mychart2
+    var myChart2 = echarts.init(document.getElementById('echarts2'));
+    var acc = {{user_accset}};
+    var accset = ecStat.histogram(acc);
+
+
+    function reverse(arr){
+      var arr_new =  arr;
+
+      
+      for (step = 0; step < arr.length; step++) {
+        arr_new[step][0] = - arr_new[step][0];
+      }
+      return arr_new;
+
+    }
+    var option2 = {
+   
+      dataZoom: [
+        
+     {
+        type: 'slider',
+        left: 0,
+        startValue:min(neg_dataMiny(),0),
+        endValue:max(neg_dataMaxy(),-100),
+        show: false 
+     }
+     ],
+          xAxis: {
+            show: false,
+        type: 'value',
+        min :-100,
+        max :0
+    },
+    yAxis: {
+        show: false,
+        type: 'value',
+        
+    },
+        
+    series: [
+        {
+          barCategoryGap:0,
+            name: 'Accuracy',
+            type: 'bar',
+            //barMaxWidth : 10,
+            encode: {
+            x: 0,
+            y: 1
+        },
+        //orient: 'horizontal',
+            data: reverse(accset.data)
+        },
+       
+      ]
+    };
+    myChart2.setOption(option2);
+
+    //echarts.connect([myChart, myChart2]);
+    echarts.connect([myChart, myChart3]);
+
+  myChart.setOption(option);
+</script>
+
+<script>
+    
+  </script>
+<script>
+ var dataset = {{user_au}};
+        var width = 400;    // 可视区域宽度
+        var height = 400;   // 可视区域高度
+
+        var xAxisWidth = 300;   // x轴宽度
+        var yAxisWidth = 300;   // y轴宽度
+
+        var padding = {top: 20, right: 20, bottom:20, left:50};
+
+        var svg = d3.select("body").select("#gg")
+                .append("svg")
+                .attr("width", width).attr("height", height);
+
+        /*定义比例尺*/
+        var xScale = d3.scale.linear()
+                .domain([0, 100])
+                .range([0, xAxisWidth]);
+
+        var yScale = d3.scale.linear()
+                .domain([0, 100])
+                .range([0, yAxisWidth]);
+
+        /* 绘制圆点 */
+        function drawCircle(){
+            var circleUpdate = svg.selectAll("circle").data(dataset);
+
+            // update处理
+            circleUpdate.transition().duration(500)
+                    .attr("cx", function(d){
+                        return padding.left + xScale(d[0]);
+                    })
+                    .attr("cy", function(d, i){
+                        return height - padding.bottom - yScale(d[1]);
+                    })
+                    .attr("r", 5);
+
+            // enter处理
+            circleUpdate.enter().append("circle")
+                    .attr("cx", function(d){
+                        return padding.left;
+                    })
+                    .attr("cy", function(d, i){
+                        return height - padding.bottom;
+                    })
+                    .attr("r", 5)
+                    .transition().duration(500)
+                    .attr("cx", function(d, i){
+                        return padding.left + xScale(d[0]);
+                    })
+                    .attr("cy", function(d, i){
+                        return height - padding.bottom - yScale(d[1]);
+                    });
+
+            // exit处理
+            circleUpdate.exit()
+                    .transition().duration(500)
+                    .attr("fill", "white")
+                    .remove();
+
+        }
+
+        /* 添加坐标轴 */
+        function drawScale(){
+            var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+            yScale.range([yAxisWidth, 0]);  // 重新设置y轴比例尺的值域,与原来的相反
+            var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+            svg.append("g").attr("class", "axis")
+                    .attr("transform", "translate("+ padding.left +","+ (height - padding.bottom) +")")
+                    .call(xAxis);
+
+            svg.append("g").attr("class", "axis")
+                    .attr("transform", "translate("+ padding.left +","+ (height - padding.bottom - yAxisWidth) +")")
+                    .call(yAxis);
+
+            // 绘制完比例尺,还原比例尺y轴值域
+            yScale.range([0, yAxisWidth]);
+        }
+
+        // 初始化
+        window.addEventListener("load", function(){
+            drawCircle();
+            drawScale();
+        });
+
+        var toFixed = Number.prototype.toFixed;
+</script>
+<script language="javascript">
+    // 这个脚本是 ie6和ie7 通用的脚本
+    function custom_close(){
+    if
+    (confirm("您确定要关闭本页吗？")){
+    window.opener=null;
+    window.open('','_self');
+    window.close();
+    }
+    else{}
+    }
+    </script>
+    <input id="btnClose" type="button" value="关闭本页" onClick="custom_close()" />
+    
+
+
+</body>
+</html>

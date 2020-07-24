@@ -1,0 +1,9 @@
+{
+  "buying": "'vhigh':1, 'high':2, 'med':3, 'low':4",
+  "maint": "'vhigh':1, 'high':2, 'med':3, 'low':4",
+  "doors":"'2':2, '3':3, '4':4, '5more':5",
+  "persons":"'2':2,'4':4, 'more':0",
+  "boot": "'small':1, 'med':2, 'big':3",
+  "safety":"'low':1,'med':2, 'high':3",
+  "Class":"'unacc':1,'acc':2, 'good':3,'vgood':4"
+}

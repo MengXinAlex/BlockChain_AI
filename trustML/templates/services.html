@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Trustworthy AI | Services</title>
+	
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+
+	<!-- css files -->
+	<link rel="icon" type="image/png"  href="{% static 'assets/img/icon_s.png' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS --> 
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.css' %}"> <!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<!-- web-fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!-- //web-fonts -->
+	
+</head>
+
+<body>
+
+<!--Header-->
+<header>
+	<div class="container agile-banner_nav">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			
+				<a class="navbar-brand" href="{% static '../index' %}"><span class="display">BlockChain technology boosting</span>Trustworthy AI </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+								
+							<a class="nav-link" href="{% static '../index' %}">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% static '../services' %}">Services</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% static '../login' %}">Login</a>
+						</li>					
+						<li class="nav-item">
+							<a class="nav-link" href="{% static '../contact' %}">Contact</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="{% static '../about' %}">About</a>
+							</li>
+					</ul>
+				</div>
+			
+		</nav>
+	</div>
+</header>
+<!--Header-->
+
+<!-- inner page banner-->
+<div class="inner-banner"  style="background: url('/static/assets/img/banner1.jpg')">
+	
+</div>
+<!-- //inner page banner-->
+
+<!-- Welcome -->
+<section class="welcome py-5 my-lg-5">
+	<div class="container">
+		<div class="row welcome_grids">
+			<div class="col-lg-7 mb-lg-0 mb-5">
+				<h3 class="mb-3 text-capitalize">Evaluate models and get rewards</h3>
+				<p class="my-2 initial font-italic">A model evaluation platform based on blockchain</p>
+				<p class="mb-5 mt-4"> When a machine learning model is trained, it needs evaluations with a large number of testing data to validate its effectiveness. However, model developers usually have limited testing data for such evaluations. Furthermore, users may lack of trust in a machine learning model because of validations with limited data from the model developer as well as other reasons. This platform aims to solve such problems.
+
+				We create a marketplace for both testing data and machine learning models. On this platform, a machine learning model can be fully evaluated with numerous testing data from all over the world, while data owners can earn rewards from such evaluations. Owners of machine learning models can also sell their fully evaluated models to potential users on this platform. 
+
+				All evaluation results are stored in a blockchain, which guarantees that the results cannot be tampered by any individual. The evaluation with numerously diverse testing data and blockchain technology boost trustworthy AI.
+				 
+				{% comment %} Two issues: trust and who controls
+						 Machine learning technology is being developed and used at an ever increasing rate. However, without access to quality testing data, potential buyers of the technology have no way to assess its performance without trusting the original engineer. This is the problem which this platform is to solve. which can be used to verify the quality of machine learning models.
+						However, one problem remains: who controls the platform? If we have to trust a third party to provide us with the correct metrics then we are in no better a situation than before. Thus, we store the results on a blockchain. This way, the results cannot be tampered with by any single individual, and we can be certain that the presented metrics are true, even in a trustless setting. {% endcomment %}
+						</p>
+				<a href="#" class="text-uppercase" data-toggle="modal" data-target="#exampleModal"><span class="fas fa-play-circle"></span> Check Video </a>
+			</div>
+			<div class="col-lg-5 welcome_right">
+				<img src="{% static 'assets/img/slide1.jpg' %}" alt="" class="img-fluid">
+				
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //Welcome -->
+
+<!-- model video-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Introduction Video</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body video">
+
+				<iframe width="853" height="480" src="https://m.youtube.com/watch?feature=share&v=asu3IJFrMbE" frameborder="0" allowfullscreen ng-show="showvideo"></iframe>
+			</div>
+			<!-- <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div> -->
+		</div>
+	</div>
+</div>
+<!-- //model video -->
+
+<!-- welcome bottom -->
+<section class="welcome_bottom" style="background: url('/static/assets/img/banner2.jpg')">
+	<div class="layer py-5">
+		<div class="container py-lg-5">
+			<div class="row bottom_grids">
+				<div class="col-lg-6 col-md-8"> 
+					<h3 class="mb-3 text-capitalize">Blockchains boosting trustworthy AI</h3> {% comment %} <i class="fas mb-4 fa-th"></i> {% endcomment %}
+					<p class="my-4">
+					Blockchain technology refers to a shared technological system that allows any participants within a business network to see the record database (also known as ledger) and permits transactions gathered into blocks (of the blockchain). A blockchain provides a transparent platform for the machine learning model evaluation with a given fee which is outlined in the terms and conditions in a smart contract. The transactions between model owners and data owners as well as model evaluation results are stored in the blockchain. The characteristics of resistance to modification of data in the blockchain boosts trustworthy AI. </p>
+					
+					{% comment %} by introducing the notion of an autonomous self-improvement system that essentially helps users solicit machine learning models for a given fee, which is outlined in the terms and conditions in a smart contract. Blockchains also allow the resulting ledger to be securely accessed by different users. This is where the notion of blockchain boosting trustworthiness, where trust between individuals is not necessary because the functionalities of using blockchain technology to evaluate machine learning models use cryptographic verification for its transactions between users who upload models and users who upload datasets used to test models. {% endcomment %}
+					<a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">View More <i class="fas fa-angle-right"></i></a>
+				</div>
+				<div class="col-lg-6 col-md-4 video text-center">
+					<a href="#" class="text-uppercase" data-toggle="modal" data-target="#exampleModal"><span class="fas fa-play-circle"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //welcome bottom -->
+
+<!-- services -->
+<section class="services py-5 my-lg-5">
+	<div class="container">
+		<h3 class="heading text-center text-capitalize mb-5">What can we do for you</h3>
+		<div class="row service_grids">
+			<div class="col-lg-4 col-md-6 mb-md-0 mb-3 text-center">
+				<div class="serv_grid1">
+					<i class="fas mb-4 fa-globe"></i>
+					<h4 class="text-uppercase">Evaluate Models<br /><br /></h4>
+					<p class="mt-4 mb-5">Evaluate your models online with numerous data.<br /><br /></p>
+					<a href="#" data-toggle="modal" data-target="#evaluate-models-details"> Learn more </a>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 col-md-6 mb-md-0 mb-3 text-center">
+				<div class="serv_grid1">
+					<i class="fas mb-4 fa-desktop"></i>
+					<h4 class="text-uppercase"> Analyse Models/Data</h4>
+					<p class="mt-4 mb-5">Analyse your model/data proformance, find the problem and improve your results.</p>
+					<a href="#" data-toggle="modal" data-target="#analyse-models-data-details"> Learn more </a>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6 mb-md-0 mb-3 text-center">
+				<div class="serv_grid1"> {% comment %} service_grid_active {% endcomment %}
+					<i class="fas mb-4 fa-user-secret"></i> {% comment %} fa-mobile-alt {% endcomment %}
+					<h4 class="text-uppercase">Certify Trustworthiness<br /></h4>
+					<p class="mt-4 mb-5">Certify trustworthiness of machine learning models with feedback from numerous users.<br /></p>
+					<a href="#" data-toggle="modal" data-target="#certify-trustworthiness-details"> Learn more </a>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6 mb-md-0 mb-3 text-center">
+				<div class="serv_grid1"> {% comment %} service_grid_active {% endcomment %}
+					<i class="fas mb-4 fa-table"></i>
+					<h4 class="text-uppercase"> Sell Data<br /><br /></h4>
+					<p class="mt-4 mb-5">Use your data to test models, and earn rewards through blockchain.<br /><br /></p>
+					<a href="#" data-toggle="modal" data-target="#sell-data-details"> Learn more </a>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6 mb-md-0 mb-3 text-center">
+				<div class="serv_grid1"> {% comment %} service_grid_active {% endcomment %}
+					<i class="fas mb-4 fa-database"></i> 
+					<h4 class="text-uppercase">Sell/Buy Models<br /><br /></h4>
+					<p class="mt-4 mb-5">Sell/Buy fully evaluated machine learning models through blockchain.<br /></p>
+					<a href="#" data-toggle="modal" data-target="#sell-models-details"> Learn more </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //services -->
+
+<!-- project -->
+<section class="project py-5 text-center">
+		<div class="container">
+			<h3 class="text-capitalize mb-md-5 mb-4">Do you want to start a new project ?</h3>
+			<a href="{% static '../contact' %}" class="text-uppercase"><i class="fas fa-envelope-open"></i> contact us </a>
+		</div>
+	</section>
+<!-- //project -->
+
+<!-- footer -->	
+<footer>
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<h3 class="text-uppercase mb-3">Address</h3>
+					<address>
+							<p><strong>Headquarters:</strong></p>
+							<p class="mb-3">UTS Central (Building 2), University of Technology Sydney, 15 Broadway, Ultimo NSW 2007, Australia</p>
+							<p><strong>Phone</strong> : +61 434 450 149</p>
+							<p><strong>Email</strong> : <a href="mailto:xianfeng19971117@gmail.com">xianfeng19971117@gmail.com</a></p>
+						</address>
+				</div>
+				<div class="col-lg-2 col-md-6 mt-lg-0 mt-sm-0 mt-4 p-md-0">
+					<h3 class="text-uppercase mb-3">links</h3>
+					<div class="links">
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Navigation</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Documentation</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Business</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Technical support</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> 24/7 Service</a>
+						<a class="pt-2 text-capitalize" href="#"><i class="fas fa-angle-right"></i> Feedback</a>
+					</div>	
+				</div>
+				<div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
+					<h3 class="text-uppercase mb-3">Recent posts</h3>
+					<div class="posts">
+							<p class="pt-2">Updated Interface
+							<span class="font-italic">13rd June, 2019.</span></p>
+							<p class="py-2 my-2 middle">Optimized data analysis
+							<span class="font-italic">10th June, 2019.</span></p>
+							<p class="pt-2">Updated user relationship
+							<span class="font-italic">8th June, 2019.</span></p>
+						</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+					<h3 class="text-uppercase mb-3">Newsletter</h3>
+					<p class="mb-4 pt-2">Subscribe to Our Newsletter to get Important News, Amazing Offers & More</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required="">
+						<button class="btn1"><i class="far fa-envelope"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</footer>
+<!-- footer -->
+
+
+
+<!-- Details of service items -->
+<div class="modal fade" id="evaluate-models-details" tabindex="-1" role="dialog" aria-labelledby="evaluatemodelsdetailsTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="evaluatemodelsdetailsTitle"> Evaluate Models</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/bg14.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;On this platform, you can evaluate your model online and save results into blockchain, which is one of the most safe technology nowadays. You can also upload your data to earn the reward. Once you have successfully uploaded your data, your money would send to your blockchain account straight forward.
+		<br /><br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="analyse-models-data-details" tabindex="-1" role="dialog" aria-labelledby="analysemodelsdetailsTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="analysemodelsdetailsTitle"> Analyse Models/Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/bg14.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;After the model is tested, both model proformance and evaluation from data provider would be fed back to model provider. We evaluate the testing result by finding the average of the squared distance between each point in the testing set, and the nearest point in the training set. This was written to allow the weighting of attributes by the model owner at some point in the future.
+		<br /><br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="certify-trustworthiness-details" tabindex="-1" role="dialog" aria-labelledby="certifytrustdetailsTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="certifytrustdetailsTitle"> Certify Trustworthiness</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/bg14.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;Trust stamp.
+		<br /><br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sell-data-details" tabindex="-1" role="dialog" aria-labelledby="selldatadetailsTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="selldatadetailsTitle"> Sell Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/bg14.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;Sell data to get rewards.
+		<br /><br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sell-models-details" tabindex="-1" role="dialog" aria-labelledby="sellmodelsdetailsTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="certifytrustdetailsTitle"> Sell/Buy Models</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/bg14.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;Sell or buy fully evaluated models......
+		<br /><br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="exampleModalLongTitle"> Trustworthy AI</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<img src="{% static 'assets/img/bg14.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;In an increasingly dynamic society, where technology has become a central part of human interaction, the importance of creating a trustworthy source of artificial intelligence (AI) has become increasingly apparent. This platform revolves around the notion of blockchains and how they can be used to explain AI and its’ output to ultimately increasing user trust.
+		<br /><br />
+		<img src="{% static 'assets/img/bg18.jpg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;Blockchain technology refers a to a shared technological system that allows any participants within a business network to see the system of record (also known as ledger) and permits transactions gathered into blocks (of the blockchain) and recorded. The blockchain process provides a transparent platform by introducing the notion of an autonomous self-improvement system that essentially helps users solicit machine learning models for a given fee, as outlined in the terms and conditions in a smart contract. Further, blockchains also allow the resulting ledger to be securely accessed by different servers. This is where the notion of blockchain boosting trustworthy, as the title of our project suggests, where trust between individuals is not necessary as the functionalities of using blockchain technology to evaluate and test Machine Learning models use cryptographic verification for its’ transactions between users who upload models and other users who upload datasets to test those models.
+		<br /><br />
+		<img src="{% static 'assets/img/bg17.jpeg' %}" class="img-fluid mb-3" alt="Modal Image" />
+		&nbsp;Machine learning (ML) is widely used to extract knowledge from data for the data-driven decision making. In essence, there are two main processes involved in developing a trained ML model using blockchains (Kurtulmus, A. Besir, Daniel, Kenny (27 Feb 2018)). Firstly, training the model using datasets adjusts the model weights to increase the accuracy of the model. The second process involved to produce a highly trained ML model is testing whereby independent data sets are uploaded by users to the system, which is then used for testing different problems related to the trained model. These different problems are dependent upon the type of problem that is being solved at hand. Certain metrics such as accuracy, recall, precision, and sensitivity to many other metrics can be used to evaluate the success of a given model. Together, these processes help validate the model thereby boosting trust between users.
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- //Vertically centered Modal -->
+
+<!-- js-scripts -->		
+
+	<!-- js -->
+	<script type="text/javascript" src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/bootstrap.js' %}"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+	<!-- //js -->	
+	
+	<!-- start-smoth-scrolling -->
+	<script src="{% static 'assets/js/SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/easing.js' %}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- start-smoth-scrolling -->
+	
+<!-- //js-scripts -->
+
+</body>
+</html>

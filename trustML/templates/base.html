@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Trustworthy AI
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- CSS Files -->
+
+
+  <link rel="icon_s.png" sizes="76x76"  href="{% static 'assets/img/icon_s.png' %}">
+  <link rel="icon" type="image/png"  href="{% static 'assets/img/icon_s.png' %}">
+  <link rel="stylesheet"  href="{% static 'assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet"  href="{% static 'assets/css/now-ui-dashboard.css' %}">
+  <link rel="stylesheet"  href="{% static 'assets/demo/demo.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+</head>
+
+<body class=" sidebar-mini ">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="blue">
+      <!--  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"  -->
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+          {{user.email.0}}{{user.email.1}}
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          {{user.get_short_name}}
+        </a>
+        <div class="navbar-minimize">
+          <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+            <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+            <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+          </button>
+        </div>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+        {% if request.path == "/user_home/" %}
+          <li class="active">
+        {% else %}
+          <li>
+        {% endif %}
+            <a href="{% static '../user_home' %}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Models</p>
+            </a>
+          </li>
+
+          {% if request.path == "/user_profile/" %}
+            <li class="active">
+          {% else %}
+            <li>
+          {% endif %}
+            <a href="{% static '../user_profile' %}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+          
+          {% if request.path == "/wallet/" %}
+            <li class="active">
+          {% else %}
+            <li>
+          {% endif %}
+            <a href="{% static '../wallet' %}">
+              <i class="now-ui-icons business_money-coins"></i>
+              <p>My Wallet</p>
+            </a>
+          </li>
+          
+          {% if  user.get_is_buyer %}
+          <li>
+              <a href ="{% static '../buy_model' %}">
+              <i class = "now-ui-icons files_box"></i>
+              <p>Model Shop</p>
+              </a>
+          </li>
+          {% endif %}
+
+          {% if  user.get_is_staff %}
+          <li>
+              <a href ="{% url 'upload_model:home' %}">
+              <i class = "now-ui-icons files_box"></i>
+              <p>My Model</p>
+              </a>
+          </li>
+          {% endif %}
+
+          {% if request.path == "/user/help" %}
+            <li class="active">
+          {% else %}
+            <li>
+          {% endif %}
+          
+            <a href="{% static '../help' %}">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Help</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">
+              <i class="now-ui-icons media-1_button-power"></i>
+              <p>Log Out</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute bg-info ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="#">Trustworthy AI with Blockchain</a>
+          </div>
+
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        {% block content_block %}
+        {% endblock %}
+      </div>
+
+      <footer class="footer">
+        <div class="container-fluid">
+
+          <!-- <div class="copyright" id="copyright">
+            &copy;
+            <script>
+              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>, Ispired by
+            <a class="text-info" href="https://www.data61.csiro.au/" target="_blank">Data61</a>. Created by
+            <a class="text-info" href="https://bitbucket.org/p03b/blockchains-boosting-trustworthy-ai/overview" target="_blank">P03B</a>.
+          </div> -->
+        </div>
+      </footer>
+
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="{% static 'assets/js/core/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/moment.min.js' %}"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="{% static 'assets/js/plugins/bootstrap-switch.js' %}"></script>
+    <!--  Plugin for Sweet Alert -->
+    <script src="{% static 'assets/js/plugins/sweetalert2.min.js' %}"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="{% static 'assets/js/plugins/jquery.validate.min.js' %}"></script>
+    <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+    <script src="{% static 'assets/js/plugins/jquery.bootstrap-wizard.js' %}"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="{% static 'assets/js/plugins/bootstrap-selectpicker.js' %}"></script>
+    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script src="{% static 'assets/js/plugins/bootstrap-datetimepicker.js' %}"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+    <script src="{% static 'assets/js/plugins/jquery.dataTables.min.js' %}"></script>
+    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+    <script src="{% static 'assets/js/plugins/bootstrap-tagsinput.js' %}"></script>
+    <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="{% static 'assets/js/plugins/jasny-bootstrap.min.js' %}"></script>
+    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+    <script src="{% static 'assets/js/plugins/fullcalendar.min.js' %}"></script>
+    <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+    <script src="{% static 'assets/js/plugins/jquery-jvectormap.js' %}"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="{% static 'assets/js/plugins/nouislider.min.js' %}"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="{% static 'assets/js/plugins/chartjs.min.js' %}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{% static 'assets/js/plugins/bootstrap-notify.js' %}"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'assets/js/now-ui-dashboard.min.js' %}" type="text/javascript"></script>
+    <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+    <script src="{% static 'assets/demo/demo.js' %}"></script>
+    <script type="text/javascript">
+      function MouseOver(obj)
+      {
+      obj.style.borderColor = "#9ecae1)";
+      }
+
+      function MouseOut(obj)
+      {
+  		obj.style.borderColor = "#9ecae1";
+      }
+  </script>
+
+</body>
+
+</html>
