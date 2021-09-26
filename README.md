@@ -1,5 +1,7 @@
 # Blockchain Boosting Trustworthy AI
 
+![Blockchain Boosting Trustworthy AI](https://github.com/MengXinAlex/BlockChain_AI/blob/master/Cover.jpg)
+
 Django Application that uses Ethereum Blockchain to submit data against a ML model,  provide feedback on various aspects of the data and reward top data submissions.
 
 ## Install Dependencies
